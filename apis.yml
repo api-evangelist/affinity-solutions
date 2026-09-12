@@ -1,18 +1,63 @@
 aid: affinity-solutions
 name: Affinity Solutions
-description: 'Affinity Solutions is a company surfaced via the API Evangelist harvest backlog (source:
-  secondary-market) and added to the network as a stub for full-pipeline profiling.'
+description: 'Affinity Solutions is a New York consumer purchase data and insights company that
+  licenses bank-direct, permissioned credit and debit card transaction data covering 100M+ consumers
+  and tens of billions of annual purchases. Its Comet platform turns that transaction feed into
+  Consumer Purchase Insights, Consumer Purchase Lift, Consumer Purchase Audiences, Card-Linked
+  Engagement and Consumer Bank Campaigns products for brands, media owners, retail and QSR, financial
+  services and investors. Data is delivered through data clean rooms (AWS Clean Rooms), a Snowflake
+  Native App on Snowflake Marketplace, managed services and aggregated-insight APIs rather than a
+  public self-serve developer portal; no public API reference, OpenAPI description or SDK is published.
+  The one machine-readable surface the company serves anonymously is an OAuth-protected Model Context
+  Protocol server on its marketing site.'
 url: https://raw.githubusercontent.com/api-evangelist/affinity-solutions/refs/heads/main/apis.yml
+image: https://www.affinity.solutions/wp-content/uploads/2026/06/header-logo.svg
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-09-12'
 modified: '2026-09-12'
+position: Producing
 tags:
 - Company
-apis: []
+- Data
+- Analytics
+- Consumer Purchase Data
+- Transaction Data
+- Marketing
+- Advertising
+- Measurement
+- Financial Services
+- Retail
+- Model Context Protocol
+apis:
+- aid: affinity-solutions:affinity-solutions-mcp-server
+  name: Affinity Solutions MCP Server
+  description: An OAuth-protected Model Context Protocol server that Affinity Solutions serves from its
+    own corporate site at www.affinity.solutions, advertised by an RFC 8414 authorization-server
+    document and an RFC 9728 protected-resource document. Two MCP endpoints are registered under the
+    site's WordPress REST namespace; both return HTTP 401 to an anonymous tools/list, so the live tool
+    set and input schemas require an authenticated OAuth introspection. This is a site/content MCP
+    surface, not the Comet consumer purchase data product, which is licensed through clean rooms and
+    Snowflake.
+  image: https://www.affinity.solutions/wp-content/uploads/2026/06/header-logo.svg
+  humanURL: https://www.affinity.solutions/
+  baseURL: https://www.affinity.solutions/wp-json/mcp/mcp-oauth-server
+  tags:
+  - Model Context Protocol
+  - Agents
+  - OAuth
+  tags_raw:
+  - MCP
+  - Agents
+  - OAuth
+  properties:
+  - type: MCPServer
+    url: mcp/affinity-solutions-mcp.yml
+  - type: Authentication
+    url: authentication/affinity-solutions-authentication.yml
+  - type: OAuthScopes
+    url: scopes/affinity-solutions-scopes.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +65,43 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://www.affinity.solutions/
+- type: Blog
+  url: https://www.affinity.solutions/newsroom/
+- type: TermsOfService
+  url: https://www.affinity.solutions/terms-and-conditions/
+- type: PrivacyPolicy
+  url: https://www.affinity.solutions/data-privacy-notice/
+- type: GitHubOrganization
+  url: https://github.com/Affinity-Solutions
+- type: LLMsTxt
+  url: llms/affinity-solutions-llms.txt
+- type: WellKnown
+  url: well-known/affinity-solutions-well-known.yml
+- type: MCPServer
+  url: mcp/affinity-solutions-mcp.yml
+- type: Authentication
+  url: authentication/affinity-solutions-authentication.yml
+- type: OAuthScopes
+  url: scopes/affinity-solutions-scopes.yml
+- type: Conformance
+  url: conformance/affinity-solutions-conformance.yml
+- type: Compliance
+  url: conformance/affinity-solutions-conformance.yml
+- type: Conventions
+  url: conventions/affinity-solutions-conventions.yml
+- type: Lifecycle
+  url: lifecycle/affinity-solutions-lifecycle.yml
+- type: Packages
+  url: packages/affinity-solutions-packages.yml
+- type: Plans
+  url: plans/affinity-solutions-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/affinity-solutions-rate-limits.yml
+- type: DomainSecurity
+  url: security/affinity-solutions-domain-security.yml
+x-enrichment:
+  date: '2026-09-12'
+  status: enriched
+  artifacts_added: 15
+  pass: local-v3

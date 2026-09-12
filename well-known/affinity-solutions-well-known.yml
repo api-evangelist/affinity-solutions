@@ -1,0 +1,44 @@
+generated: '2026-09-12'
+method: probed
+source: live GET probes of the named /.well-known/ path list on every host this record knows
+note: >-
+  Probed the registrable domain and www (affinity.solutions redirects to www.affinity.solutions), the
+  legacy affinitysolutions.com domain (also redirects to www.affinity.solutions), and the API baseURL
+  host, which is the same host. No api./docs./developer./portal./status. subdomain resolves (NXDOMAIN),
+  so there is no separate API or docs host to probe. Two documents are really served: an RFC 8414
+  OAuth 2.0 authorization-server metadata document and an RFC 9728 OAuth 2.0 protected-resource
+  metadata document, both advertising a single scope, "mcp". No security.txt, no api-catalog, no
+  openid-configuration, no ai-plugin.json. The 404 responses return the site's HTML 404 page, so they
+  are genuine misses rather than soft-200 shells.
+hosts:
+- host: www.affinity.solutions
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: affinity-solutions-oauth-authorization-server.json
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: affinity-solutions-oauth-protected-resource.json
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: affinity.solutions
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: affinity-solutions-oauth-authorization-server.json
+  - path: /.well-known/security.txt
+    status: 404
+- host: www.affinitysolutions.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404

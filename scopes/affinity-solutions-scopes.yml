@@ -1,0 +1,18 @@
+generated: '2026-09-12'
+method: probed
+source: https://www.affinity.solutions/.well-known/oauth-authorization-server
+docs: null
+docs_note: >-
+  The provider publishes no scopes or permissions reference page; these scopes are read from the
+  authorization-server and protected-resource metadata documents themselves.
+authorization_server: https://www.affinity.solutions
+scopes:
+- name: mcp
+  description: >-
+    The single scope the authorization server advertises (scopes_supported) and the single scope the
+    protected-resource document attaches to the MCP endpoint. The provider publishes no per-tool or
+    per-resource scope breakdown; a finer-grained model, if one exists, is only visible after an
+    authenticated tools/list, which returns 401 anonymously.
+  resource: https://www.affinity.solutions/wp-json/mcp/mcp-oauth-server
+  source: both scopes_supported in the RFC 8414 document and scopes_supported in the RFC 9728 document
+scope_count: 1

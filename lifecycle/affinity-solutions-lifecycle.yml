@@ -1,0 +1,47 @@
+generated: '2026-09-12'
+method: probed
+source: >-
+  https://www.affinity.solutions/llms.txt, https://www.affinity.solutions/sitemap_index.xml,
+  live probes of status/changelog candidate hosts
+versioning:
+  scheme: none-published
+  current_version: null
+  note: No API version string is advertised on the MCP surface; MCP initialize returns 401 anonymously.
+deprecation_policy:
+  published: false
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    No deprecation or sunset policy is published, and no RFC 8594 Sunset or Deprecation header was
+    observed on any probed response. No Deprecation pointer is emitted.
+status_page:
+  published: false
+  url: null
+  note: >-
+    REJECTED CANDIDATE. https://affinity-solutions.statuspage.io returns HTTP 200, but the body is
+    Atlassian's own Statuspage product marketing page ("Real-Time Incident Communication with
+    Statuspage | Atlassian") — an unclaimed subdomain, not a status page for this company. Reading the
+    body rather than the status code is what caught it. https://www.affinity.solutions/status/ returns
+    404 and no status.* subdomain resolves. No StatusPage pointer is emitted.
+  probes:
+  - url: https://affinity-solutions.statuspage.io
+    status: 200
+    verdict: soft-hit, Atlassian marketing shell, not this company's status page
+  - url: https://www.affinity.solutions/status/
+    status: 404
+  - url: https://status.affinitysolutions.com
+    status: 0
+    verdict: NXDOMAIN
+sla:
+  published: false
+  note: No SLA is published; commercial terms are contracted per engagement.
+changelog:
+  published: false
+  url: null
+  note: >-
+    https://www.affinity.solutions/changelog/ returns 404 and no changelog or release-notes page appears
+    in the provider's own llms.txt page index or sitemaps. The Newsroom
+    (https://www.affinity.solutions/newsroom/) is dated company and market commentary, not a product or
+    API changelog, and is wired as Blog rather than ChangeLog.
+deprecated_operations: []
+deprecated_operations_note: No OpenAPI exists from which deprecated operations could be derived.

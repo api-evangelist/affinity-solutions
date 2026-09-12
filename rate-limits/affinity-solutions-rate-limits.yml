@@ -1,0 +1,26 @@
+generated: '2026-09-12'
+method: probed
+source: https://www.affinity.solutions/wp-json/mcp/mcp-oauth-server
+limit_count: 0
+rate_limits: []
+response_headers: []
+exhaustion_status: null
+note: >-
+  No rate limits are documented anywhere on the provider's surface — there is no API reference, no
+  developer portal and no docs host on which limits could be stated. Live probes of the MCP endpoints,
+  the WordPress REST root and both OAuth discovery documents returned no X-RateLimit-*, RateLimit-* or
+  Retry-After header on any response, and no 429 was observed. An honest zero, recorded from live
+  observation rather than assumed.
+probes:
+- url: https://www.affinity.solutions/wp-json/mcp/mcp-oauth-server
+  method: POST
+  status: 401
+  rate_limit_headers: none
+- url: https://www.affinity.solutions/wp-json/
+  method: GET
+  status: 200
+  rate_limit_headers: none
+- url: https://www.affinity.solutions/.well-known/oauth-authorization-server
+  method: GET
+  status: 200
+  rate_limit_headers: none

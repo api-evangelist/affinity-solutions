@@ -1,0 +1,53 @@
+generated: '2026-09-12'
+method: probed
+source: https://www.affinity.solutions/.well-known/oauth-protected-resource
+name: Affinity Solutions MCP Server
+status: published
+deployment:
+  mode: remote
+  endpoint: https://www.affinity.solutions/wp-json/mcp/mcp-oauth-server
+  auth: oauth
+  verified: probed
+discovery:
+  protected_resource_document: https://www.affinity.solutions/.well-known/oauth-protected-resource
+  authorization_server_document: https://www.affinity.solutions/.well-known/oauth-authorization-server
+  rest_namespace_index: https://www.affinity.solutions/wp-json/mcp
+  www_authenticate: >-
+    Bearer realm="https://www.affinity.solutions",
+    resource_metadata="https://www.affinity.solutions/.well-known/oauth-protected-resource"
+endpoints:
+- url: https://www.affinity.solutions/wp-json/mcp/mcp-oauth-server
+  methods: [POST, GET, DELETE]
+  auth: oauth
+  probe:
+    method: POST
+    body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+    http_status: 401
+    response: '{"code":"mcp_unauthorized","message":"MCP authentication required.","data":{"status":401}}'
+  note: The endpoint named as the protected resource in the RFC 9728 document. This is the one an MCP client targets.
+- url: https://www.affinity.solutions/wp-json/mcp/mcp-adapter-default-server
+  methods: [POST, GET, DELETE]
+  auth: wordpress-session-or-application-password
+  probe:
+    method: POST
+    body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+    http_status: 401
+    response: '{"code":"rest_forbidden","message":"Sorry, you are not allowed to do that.","data":{"status":401}}'
+  note: A second registered MCP server on the same adapter, gated by the WordPress REST permission layer rather than OAuth.
+tools: []
+tools_note: >-
+  NOT RECORDED, NOT DERIVED. Anonymous tools/list returns HTTP 401 on both endpoints, so the live tool
+  set and the per-tool inputSchema require an authenticated OAuth introspection we do not hold and will
+  not attempt. The provider publishes no OpenAPI and no llms.txt tool list, so there is no second source
+  to fall back to; listing tools here would be fabrication. The adjacent wp-abilities/v1 REST namespace
+  (which is what the WordPress MCP adapter projects as tools) is also 401 to anonymous callers.
+platform:
+  runtime: WordPress MCP adapter over the site's WordPress REST API
+  evidence: >-
+    https://www.affinity.solutions/wp-json/ advertises namespaces including "mcp" and "wp-abilities/v1"
+    alongside wp/v2; the MCP routes live under the mcp namespace at /wp-json/mcp/.
+scope_caveat: >-
+  This server is attached to the corporate marketing site (www.affinity.solutions), not to the Comet
+  consumer purchase data platform. Comet / Consumer Purchase Insights is licensed through AWS Clean
+  Rooms, a Snowflake Native App on Snowflake Marketplace, and managed services; no public MCP, REST or
+  GraphQL contract for that product was found.

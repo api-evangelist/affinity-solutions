@@ -1,0 +1,106 @@
+generated: '2026-09-12'
+method: probed
+source: >-
+  https://www.affinity.solutions/.well-known/oauth-authorization-server,
+  https://www.affinity.solutions/.well-known/oauth-protected-resource,
+  https://www.affinity.solutions/data-privacy-notice/
+note: >-
+  Protocol conformance below is read from the provider's own discovery documents (fetched anonymously,
+  HTTP 200) — the documents ARE the evidence. Compliance certifications below are claims the provider
+  publishes in prose on its Data Privacy Notice; they are recorded as published claims, not as audited
+  findings, and no trust center or downloadable report was found to corroborate them.
+conformance:
+- id: rfc8414
+  name: OAuth 2.0 Authorization Server Metadata
+  conforms: true
+  evidence: https://www.affinity.solutions/.well-known/oauth-authorization-server
+  detail: Served at the RFC 8414 well-known path with issuer, authorization_endpoint, token_endpoint and revocation_endpoint.
+- id: rfc9728
+  name: OAuth 2.0 Protected Resource Metadata
+  conforms: true
+  evidence: https://www.affinity.solutions/.well-known/oauth-protected-resource
+  detail: >-
+    Names the MCP endpoint as the resource, lists authorization_servers and bearer_methods_supported,
+    and the 401 on the resource carries a WWW-Authenticate header with the matching resource_metadata
+    parameter — the full RFC 9728 discovery loop, correctly wired.
+- id: rfc7636
+  name: PKCE
+  conforms: true
+  evidence: https://www.affinity.solutions/.well-known/oauth-authorization-server
+  detail: code_challenge_methods_supported is ["S256"]; token_endpoint_auth_methods_supported is ["none"] (public clients).
+- id: rfc9207
+  name: OAuth 2.0 Authorization Server Issuer Identification
+  conforms: true
+  evidence: https://www.affinity.solutions/.well-known/oauth-authorization-server
+  detail: authorization_response_iss_parameter_supported is true.
+- id: rfc6749
+  name: OAuth 2.0 Authorization Code + Refresh Token
+  conforms: true
+  evidence: https://www.affinity.solutions/.well-known/oauth-authorization-server
+  detail: grant_types_supported is ["authorization_code","refresh_token"]; response_types_supported is ["code"].
+- id: mcp
+  name: Model Context Protocol
+  conforms: true
+  evidence: https://www.affinity.solutions/wp-json/mcp/mcp-oauth-server
+  detail: >-
+    A JSON-RPC MCP endpoint answering POST/GET/DELETE, advertised through the MCP OAuth authorization
+    profile (scope "mcp"). Protocol version could not be confirmed — initialize returns 401 anonymously.
+- id: oidc
+  name: OpenID Connect
+  conforms: false
+  evidence: https://www.affinity.solutions/.well-known/openid-configuration
+  detail: HTTP 404. The server is an OAuth 2.1 authorization server, not an OIDC provider.
+- id: rfc9457
+  name: Problem Details for HTTP APIs
+  conforms: false
+  evidence: https://www.affinity.solutions/wp-json/mcp/mcp-oauth-server
+  detail: >-
+    Errors use the WordPress REST envelope ({code,message,data:{status}}) with content-type
+    application/json, not application/problem+json.
+- id: rfc9116
+  name: security.txt
+  conforms: false
+  evidence: https://www.affinity.solutions/.well-known/security.txt
+  detail: HTTP 404 on every host probed.
+domain_standard_conformance:
+  found: false
+  note: >-
+    REWARD-ONLY, and honestly empty. Affinity Solutions sits in consumer purchase / card transaction
+    data, a market whose exchange standards (ISO 8583, ISO 20022, X12, OpenRTB, IAB Tech Lab ad
+    measurement) would surface in a data or bidding contract. The company publishes no contract for its
+    data products at all, so there is nothing in which a domain-standard signature could be declared.
+    No standard is asserted on its behalf.
+compliance:
+  method: searched
+  source: https://www.affinity.solutions/data-privacy-notice/
+  claims_published: true
+  certifications:
+  - name: PCI DSS Level 1
+    status: claimed
+    evidence: https://www.affinity.solutions/data-privacy-notice/
+    quote: We are PCI DSS Level 1 certified by independent audit.
+  - name: SSAE 18 SOC 1 Type 2
+    status: claimed
+    evidence: https://www.affinity.solutions/data-privacy-notice/
+    quote: We are also SSAE 18 SOC 1 Type 2 and SOC 2 Type 2 audited by an independent third party for secure operation controls.
+  - name: SOC 2 Type 2
+    status: claimed
+    evidence: https://www.affinity.solutions/data-privacy-notice/
+    quote: We are also SSAE 18 SOC 1 Type 2 and SOC 2 Type 2 audited by an independent third party for secure operation controls.
+  regulatory_regimes:
+  - name: GLBA
+    detail: >-
+      The privacy notice states that the transaction information Affinity receives from financial
+      institutions is "blind" and that, under GLBA, consumers do not hold the same rights over it as
+      over personal information.
+    evidence: https://www.affinity.solutions/data-privacy-notice/
+  - name: CCPA / CPRA / TDPSA / UK GDPR
+    detail: >-
+      The notice asserts that de-identified, non-reidentifiable data sets fall outside the scope of
+      these regimes; a OneTrust webform is provided for individual rights requests.
+    evidence: https://affinitysolutions-privacy.my.onetrust.com/webform/a564cfa1-53bf-4c10-bf95-cd907432d7e8/7e4e6bf3-6562-454e-8c73-6a7bd1f4b336
+  - name: EU/UK Article 27 representative
+    detail: VeraSafe is named as the Article 27 representative.
+    evidence: https://www.verasafe.com/privacy-services/contact-article-27-representative/
+  trust_center: null
+  trust_center_note: No trust.affinity.solutions host resolves and no /trust or /security page exists (both HTTP 404).

@@ -1,0 +1,32 @@
+generated: '2026-09-12'
+method: searched
+source: >-
+  registry.npmjs.org search, pypi.org, api.github.com/orgs/Affinity-Solutions,
+  https://www.affinity.solutions/llms.txt
+package_count: 0
+packages: []
+official_sdk_count: 0
+note: >-
+  No first-party client library exists in any registry. npm search for "affinity-solutions" returns only
+  unrelated packages (no vendor-scoped org); pypi.org/pypi/affinity-solutions/json and
+  pypi.org/pypi/affinitysolutions/json both return HTTP 404. The GitHub organization
+  https://github.com/Affinity-Solutions is real (created 2021-02-03, HTTP 200) but carries
+  public_repos: 0, so there is no source-distributed SDK either. The provider's own llms.txt page index
+  names no SDK, CLI or developer page. No SDKs pointer is emitted, because there is no SDK.
+  CAUTION RECORDED: the npm/PyPI namespace "affinity" and the packages around developer.affinity.co
+  belong to Affinity (the relationship-intelligence CRM at affinity.co), a DIFFERENT company. None of
+  them were considered for this record.
+registries_checked:
+- registry: npm
+  query: affinity-solutions
+  result: no first-party package
+- registry: pypi
+  query: affinity-solutions
+  status: 404
+- registry: pypi
+  query: affinitysolutions
+  status: 404
+- registry: github
+  org: Affinity-Solutions
+  status: 200
+  public_repos: 0

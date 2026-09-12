@@ -1,0 +1,49 @@
+generated: '2026-09-12'
+method: probed
+source: https://www.affinity.solutions/.well-known/oauth-authorization-server
+note: >-
+  Derived from the provider's own RFC 8414 authorization-server metadata document and the RFC 9728
+  protected-resource document, both fetched anonymously at HTTP 200. derive-authentication.py produced
+  nothing because the provider publishes no OpenAPI; these fields are read verbatim from the discovery
+  documents, not inferred.
+schemes:
+- name: oauth2_mcp
+  type: oauth2
+  flow: authorization_code
+  pkce:
+    required_methods: [S256]
+  issuer: https://www.affinity.solutions
+  authorization_endpoint: https://www.affinity.solutions/oauth/authorize
+  token_endpoint: https://www.affinity.solutions/oauth/token
+  revocation_endpoint: https://www.affinity.solutions/oauth/revoke
+  grant_types_supported: [authorization_code, refresh_token]
+  response_types_supported: [code]
+  token_endpoint_auth_methods_supported: [none]
+  scopes_supported: [mcp]
+  client_registration:
+    dynamic_registration_endpoint: null
+    client_id_metadata_document_supported: true
+    note: >-
+      No RFC 7591 dynamic client registration endpoint is advertised. Instead the server declares
+      client_id_metadata_document_supported, so a client identifies itself with a URL-shaped client_id
+      resolving to its own metadata document. Public clients only (token_endpoint_auth_methods_supported
+      is ["none"]), which is the OAuth 2.1 public-client-with-PKCE profile MCP expects.
+  applies_to:
+  - https://www.affinity.solutions/wp-json/mcp/mcp-oauth-server
+- name: wordpress_application_password
+  type: http
+  http_scheme: basic
+  source: https://www.affinity.solutions/wp-json/
+  note: >-
+    The site's WordPress REST root advertises application-passwords authentication with an authorization
+    endpoint at /wp-admin/authorize-application.php. This gates the wp-abilities/v1 namespace and the
+    second MCP endpoint. It is site-administration auth, not a customer API credential.
+  applies_to:
+  - https://www.affinity.solutions/wp-json/mcp/mcp-adapter-default-server
+  - https://www.affinity.solutions/wp-json/wp-abilities/v1/
+product_api_auth:
+  documented: false
+  note: >-
+    No authentication documentation exists for the Comet / Consumer Purchase Insights data products.
+    Access is contracted through clean rooms, a Snowflake Native App and managed services, none of which
+    publish a public credential model.

@@ -1,0 +1,93 @@
+generated: '2026-09-12'
+method: probed
+source: >-
+  live probes of https://www.affinity.solutions/wp-json/ and
+  https://www.affinity.solutions/wp-json/mcp/mcp-oauth-server
+note: >-
+  There is no OpenAPI and no published API reference to derive conventions from. Everything below is
+  observed from the live surface the provider actually serves, or recorded as unknown. Nothing here is
+  inferred from a docs page, because there is no docs page.
+auth_style:
+  primary: OAuth 2.1 authorization code + PKCE (S256), public client, bearer token in the Authorization header
+  evidence: https://www.affinity.solutions/.well-known/oauth-authorization-server
+  challenge: >-
+    401 responses carry a compliant WWW-Authenticate Bearer header with realm and resource_metadata,
+    so a client can discover the authorization server from the failure itself.
+  see_also: authentication/affinity-solutions-authentication.yml
+idempotency:
+  coverage: none
+  scope: []
+  mechanism: null
+  header: null
+  evidence: >-
+    No Idempotency-Key or equivalent header is documented or advertised anywhere on the provider's
+    surface, and there is no API reference in which such a mechanism could be stated. The MCP endpoint
+    could not be introspected anonymously (401), so no per-tool replay protection could be observed.
+  note: >-
+    Recorded as none because nothing observable establishes replay protection. This is an absence of
+    evidence on an auth-gated surface, not a demonstrated absence of the mechanism.
+reversibility:
+  grade: na
+  note: >-
+    No public write surface exists to reverse. The only anonymously reachable endpoints are read-only
+    discovery documents and the WordPress REST read routes; every mutating surface (the MCP tools, the
+    wp-abilities run endpoint) is behind OAuth or WordPress application-password auth and could not be
+    enumerated. With the tool set unknown, asserting either a reversal path or a window would be
+    invention, and the contract is explicit that an invented window is the one error that can cost a
+    user real money.
+  write_surfaces: []
+dry_run_mode:
+  supported: unknown
+  note: Not observable — the tool set is auth-gated and no reference documents a dry-run or preview mode.
+pagination:
+  style: unknown
+  note: >-
+    The underlying WordPress REST API uses page/per_page query parameters with X-WP-Total and
+    X-WP-TotalPages response headers, but that is the site CMS convention rather than a product API
+    contract, and the MCP tool surface does not expose it. Recorded as unknown rather than attributed.
+versioning:
+  scheme: none-published
+  note: >-
+    No API version is advertised for the MCP surface. The MCP protocolVersion could not be read because
+    initialize returns 401 anonymously.
+  see_also: lifecycle/affinity-solutions-lifecycle.yml
+error_envelope:
+  shape: WordPress REST error object
+  format: '{"code": "<string>", "message": "<string>", "data": {"status": <int>}}'
+  content_type: application/json; charset=UTF-8
+  rfc9457: false
+  observed:
+  - endpoint: https://www.affinity.solutions/wp-json/mcp/mcp-oauth-server
+    status: 401
+    body: '{"code":"mcp_unauthorized","message":"MCP authentication required.","data":{"status":401}}'
+  - endpoint: https://www.affinity.solutions/wp-json/mcp/mcp-adapter-default-server
+    status: 401
+    body: '{"code":"rest_forbidden","message":"Sorry, you are not allowed to do that.","data":{"status":401}}'
+  note: >-
+    Two different error codes for the same anonymous call, which is a useful signal: the two registered
+    MCP endpoints sit behind two different authorization layers.
+rate_limit_signal:
+  headers_observed: []
+  note: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After header was returned on any probed response, and no
+    limits are documented. See rate-limits/affinity-solutions-rate-limits.yml.
+request_id_tracing:
+  supported: false
+  note: No request-id or correlation-id header was returned on any probed response.
+metadata_fields:
+  supported: unknown
+field_expansion:
+  supported: unknown
+security_headers_observed:
+- strict-transport-security: max-age=31536000; includeSubDomains;
+- x-content-type-options: nosniff
+- x-frame-options: SAMEORIGIN
+- x-xss-protection: 1; mode=block
+- x-robots-tag: noindex
+cross_links:
+  authentication: authentication/affinity-solutions-authentication.yml
+  scopes: scopes/affinity-solutions-scopes.yml
+  conformance: conformance/affinity-solutions-conformance.yml
+  lifecycle: lifecycle/affinity-solutions-lifecycle.yml
+  rate_limits: rate-limits/affinity-solutions-rate-limits.yml
+  mcp: mcp/affinity-solutions-mcp.yml

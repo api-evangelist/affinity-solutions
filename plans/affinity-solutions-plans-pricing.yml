@@ -1,0 +1,29 @@
+generated: '2026-09-12'
+method: searched
+source: https://www.affinity.solutions/
+plan_count: 0
+plans: []
+note: >-
+  Affinity Solutions publishes no pricing or plans page. /pricing/ returns HTTP 404, no pricing URL
+  appears in the site's own llms.txt page index or in either sitemap, and every product page
+  (Consumer Purchase Insights, Consumer Purchase Lift, Consumer Purchase Audiences, Card-Linked
+  Engagement, Consumer Bank Campaigns, Comet) ends in a "Talk to us" contact form rather than a tier
+  table. This is an enterprise data-licensing motion: commercial terms are negotiated per engagement and
+  delivered through a data clean room, a Snowflake Native App listing, or managed services. An honest
+  zero, not a gap in the search.
+evidence:
+- url: https://www.affinity.solutions/pricing/
+  status: 404
+- url: https://www.affinity.solutions/llms.txt
+  status: 200
+  detail: Full page index served by the provider; contains no pricing or plans page.
+- url: https://www.affinity.solutions/sitemap_index.xml
+  status: 200
+  detail: post-sitemap and page-sitemap only; no pricing page.
+distribution_channels:
+- name: Snowflake Marketplace (Consumer Purchase Insights Syndicated, Snowflake Native App)
+  pricing_published: false
+- name: AWS Clean Rooms
+  pricing_published: false
+- name: Managed services / direct licensing
+  pricing_published: false
