@@ -1,0 +1,14 @@
+{
+  "repo": "affinity-solutions",
+  "feeds": [
+    {
+      "source": "https://www.affinity.solutions/",
+      "feed_url": "https://www.affinity.solutions/feed/",
+      "title": "",
+      "saved": 1,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 1,
+  "fetched": "2026-09-13T13:00:00Z"
+}

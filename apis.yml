@@ -26,6 +26,18 @@ tags:
 - Transaction Data
 - Marketing
 - Advertising
+- Measurements
+- Financial-Services
+- Retail
+- MCP
+tags_raw:
+- Company
+- Data
+- Analytics
+- Consumer Purchase Data
+- Transaction Data
+- Marketing
+- Advertising
 - Measurement
 - Financial Services
 - Retail
@@ -44,9 +56,9 @@ apis:
   humanURL: https://www.affinity.solutions/
   baseURL: https://www.affinity.solutions/wp-json/mcp/mcp-oauth-server
   tags:
-  - Model Context Protocol
+  - MCP
   - Agents
-  - OAuth
+  - Authentication
   tags_raw:
   - MCP
   - Agents
