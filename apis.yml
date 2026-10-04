@@ -27,7 +27,7 @@ tags:
 - Marketing
 - Advertising
 - Measurements
-- Financial-Services
+- Financial Services
 - Retail
 - MCP
 tags_raw:
@@ -42,6 +42,7 @@ tags_raw:
 - Financial Services
 - Retail
 - Model Context Protocol
+- Financial-Services
 apis:
 - aid: affinity-solutions:affinity-solutions-mcp-server
   name: Affinity Solutions MCP Server
@@ -70,6 +71,9 @@ apis:
     url: authentication/affinity-solutions-authentication.yml
   - type: OAuthScopes
     url: scopes/affinity-solutions-scopes.yml
+  x-surface: platform-generated
+  x-platform: wordpress
+  x-platform-surface: mcp-plugin
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
