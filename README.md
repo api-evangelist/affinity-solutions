@@ -64,5 +64,114 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Affinity Solutions is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.nasdaqprivatemarket.com/
+Affinity Solutions is a New York consumer purchase data and insights company that licenses bank-direct, permissioned credit and debit card transaction data covering 100M+ consumers and tens of billions of annual purchases. Its Comet platform turns that transaction feed into Consumer Purchase Insights, Consumer Purchase Lift, Consumer Purchase Audiences, Card-Linked Engagement and Consumer Bank Campaigns products for brands, media owners, retail and QSR, financial services and investors. Data is delivered through data clean rooms (AWS Clean Rooms), a Snowflake Native App on Snowflake Marketplace, managed services and aggregated-insight APIs rather than a public self-serve developer portal; no public API reference, OpenAPI description or SDK is published. The one machine-readable surface the company serves anonymously is an OAuth-protected Model Context Protocol server on its marketing site.
+
+**Areas:** Company · Data · Analytics · Consumer Purchase Data · Transaction Data · Marketing · Advertising · Measurements · Financial Services · Retail · MCP
+
+## Affinity Solutions on APIs.io
+
+Everything profiled for Affinity Solutions is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/affinity-solutions/](https://apis.io/providers/affinity-solutions/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Affinity Solutions MCP Server](https://apis.io/apis/affinity-solutions/affinity-solutions-mcp-server/) — An OAuth-protected Model Context Protocol server that Affinity Solutions serves from its own corporate site at www.affinity.solutions, advertised by an RFC…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [Affinity Solutions MCP Server](https://apis.io/servers/affinity-solutions/affinity-solutions-mcp-server/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Affinity Solutions Authentication](https://apis.io/security/affinity-solutions/affinity-solutions-authentication/)
+- [Affinity Solutions Domain Security](https://apis.io/security/affinity-solutions/affinity-solutions-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Affinity Solutions Scopes](https://apis.io/scopes/affinity-solutions/affinity-solutions-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Affinity Solutions Plans Pricing](https://apis.io/plans/affinity-solutions/affinity-solutions-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Affinity Solutions Rate Limits](https://apis.io/rate-limits/affinity-solutions/affinity-solutions-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.affinity.solutions/)
+- [Blog](https://www.affinity.solutions/newsroom/)
+- [Terms of service](https://www.affinity.solutions/terms-and-conditions/)
+- [Privacy policy](https://www.affinity.solutions/data-privacy-notice/)
+- [GitHub](https://github.com/Affinity-Solutions)
+
+## API Evangelist rating
+
+**Kin Score 22.3** — emerging · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 14.3 |
+| Access clarity | 28.9 |
+
+**Agent readiness 19.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | platform (partial credit) |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 39.2** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/affinity-solutions/](https://apis.io/providers/affinity-solutions/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Affinity Solutions: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/affinity-solutions/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
